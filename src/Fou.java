@@ -1,7 +1,18 @@
 public class Fou {
 
-    public static boolean fou(int ligneD, int colonneD, int ligneA, int colonneA, int[][] tab) {
+    public static boolean fou(int ligneD, int colonneD, int ligneA, int colonneA, int[][] tab, int cpt_tour) {
 
+
+        if (cpt_tour % 2 != 0) {
+            if (tab[ligneA][colonneA] > 0) {
+                return false;
+            }
+
+        } else {
+            if (tab[ligneA][colonneA] < 0) {
+                return false;
+            }
+        }
 
         int compteurligne, compteurcolonne;
 
@@ -16,14 +27,12 @@ public class Fou {
             compteurcolonne = (colonneD - colonneA);
 
         if (compteurligne == compteurcolonne) {
-            if (ligneD > ligneA && (colonneD > colonneA || colonneD < colonneA)) {
-                int cptColonne_verifCaseVide = colonneD;
+            if (ligneD > ligneA && (colonneD > colonneA)) {
                 int cpt = 1;
 
 
-                while (cptColonne_verifCaseVide > colonneA) {
+                while (cpt < compteurcolonne) {
                     if (tab[ligneD - cpt][colonneD - cpt] == Constantes.CASE_VIDE) {
-                        cptColonne_verifCaseVide--;
                         cpt++;
                     } else
                         return false;
@@ -33,12 +42,10 @@ public class Fou {
             }
 
             if (ligneD > ligneA && colonneD < colonneA) {
-                int cptColonne_verifCaseVide = colonneD;
                 int cpt = 1;
 
-                while (cptColonne_verifCaseVide > colonneA) {
+                while (cpt < compteurcolonne) {
                     if (tab[ligneD - cpt][colonneD + cpt] == Constantes.CASE_VIDE) {
-                        cptColonne_verifCaseVide--;
                         cpt++;
                     } else
                         return false;
@@ -49,13 +56,11 @@ public class Fou {
 
 
             if (ligneD < ligneA && colonneD > colonneA) {
-                int cptColonne_verifCaseVide = colonneD;
                 int cpt = 1;
 
 
-                while (cptColonne_verifCaseVide < colonneA) {
+                while (cpt < compteurcolonne) {
                     if (tab[ligneD + cpt][colonneD - cpt] == Constantes.CASE_VIDE) {
-                        cptColonne_verifCaseVide++;
                         cpt++;
 
                     } else
@@ -66,13 +71,11 @@ public class Fou {
             }
 
             if (ligneD < ligneA && colonneD < colonneA) {
-                int cptColonne_verifCaseVide = colonneD;
                 int cpt = 1;
 
 
-                while (cptColonne_verifCaseVide < colonneA) {
+                while (cpt < compteurcolonne) {
                     if (tab[ligneD + cpt][colonneD + cpt] == Constantes.CASE_VIDE) {
-                        cptColonne_verifCaseVide++;
                         cpt++;
 
                     } else

@@ -83,7 +83,7 @@ public class Partie {
 
             //cas déplacement d'un fou
             case Constantes.FOU_NOIR, Constantes.FOU_BLANC:
-                if (Fou.fou(ligneD, colonneD, ligneA, colonneA, échiquier)) {
+                if (Fou.fou(ligneD, colonneD, ligneA, colonneA, échiquier, cpt)) {
                     déplacementPionsEchiquier(échiquier, ligneD, colonneD, ligneA, colonneA, mpb, mpn, cpt);
                     return true;
                 } else
